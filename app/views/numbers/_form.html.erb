@@ -1,0 +1,12 @@
+<% form_for @number do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :campaign_id %><br />
+    <%= f.text_field :campaign_id %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

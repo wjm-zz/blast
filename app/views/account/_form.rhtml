@@ -1,0 +1,19 @@
+<%= error_messages_for :user %>
+<% form_for :user do |f| -%>
+<p><label for="login">Login</label><br/>
+<%= f.text_field :login %></p>
+
+<p><label for="role">Role</label><br/>
+<%= f.select :role_id, Role.find(:all).collect{|c| [c.name, c.id]} %>
+
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+<p><label for="password">Password</label><br/>
+<%= f.password_field :password %></p>
+
+<p><label for="password_confirmation">Confirm Password</label><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= submit_tag 'Submit' %></p>
+<% end -%>

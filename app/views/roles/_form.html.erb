@@ -1,0 +1,23 @@
+<% form_for @role do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes, :size => "25x3" %>
+  </p>
+  
+    <h3>Rights</h3>
+  <%- for right in Right.all -%>
+    <p>
+      <%= check_box_tag 'role[right_ids][]', right.id, @role.rights.include?(right) -%>
+      <%=h right.name -%>
+    </p>
+  <%- end -%>
+  <%= hidden_field_tag 'role[right_ids][]', '' %>
+  
+  
+  <p><%= f.submit "Submit" %></p>
+<% end %>

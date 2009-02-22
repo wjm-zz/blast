@@ -1,0 +1,20 @@
+<% title "Rights" %>
+
+<table>
+  <tr>
+  	<th>ID</th>
+    <th>Name</th>
+    <th>Notes</th>
+    <th>&nbsp;</th>
+  </tr>
+  <% for right in @rights %>
+    <tr>
+      <td><%=h right.id %></td>
+      <td><%=h right.name %></td>
+      <td><%=h right.notes %></td>
+      <td><%= link_to "Show", right %> - <%= link_to "Edit", edit_right_path(right) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Right", new_right_path %></p>

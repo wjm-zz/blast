@@ -1,0 +1,23 @@
+<% title "Role" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @role.name %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @role.notes %>
+</p>
+<p>
+	<strong>Rights:</strong>
+	<% @role.rights.each do |r| %>
+	<ul>
+		<li><%= r.name %><%= " ("+r.notes+")" if r.notes? %></li>
+	</ul>
+	<% end %>
+</p><br>
+<p>
+  <%= link_to "Edit", edit_role_path(@role) %> |
+  <%= link_to "Destroy", @role, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", roles_path %>
+</p>

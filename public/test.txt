@@ -1,0 +1,89 @@
+body
+{
+  font-family: Verdana, Arial, Helvetica;
+  color: #000000;
+}
+div
+{
+    padding: 10px;
+}
+
+#menu
+{
+  background: #CCFFFF;
+  border: #FFFFFF;
+  height: 400px;
+  width: 100px;
+  float: left;
+    border: dotted 1px black;
+}
+#content {
+  width: 95%;
+  margin: 0 auto;
+  background-color: #FFF;
+  padding: 10px;
+
+  margin-top: 20px;
+}
+#footer
+{
+width: 90%;
+bottom:0px;
+margin-bottom:0px;
+z-index: 9999;
+border: dotted 1px red;
+text-align: center;
+font-size: small;
+margin-top: 450px;
+}
+
+a:link
+{
+  color: #FFCC00;
+  text-decoration: blink;
+}
+
+a:visited
+{
+  color: #FFFF99
+}
+
+a:active
+{
+  color: #FF3300
+}
+
+h1, h2, h3, h4, h5, h6
+{
+  font-family: Verdana, Arial, Helvetica;
+}
+
+h1
+{
+  color: #FFCC00
+}
+
+h2
+{
+  color: #FFFFFF
+}
+
+h3
+{
+  color: #CC3300
+}
+
+h4
+{
+  color: #FFFF99
+}
+
+h5
+{
+  color: #FFFF00
+}
+
+h6
+{
+  color: #FFFFFF
+}

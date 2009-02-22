@@ -1,0 +1,10 @@
+<% title "Number Import" %>
+Bad records:
+<% @holder = 0 %>
+<% @parsed_file.each do |p| %>
+	<% if p.size != 10 %>
+		<br><%= @holder += 1 %>: <%= p%>(Size = <%= p.size %>)
+	<% end %>
+<% end %>
+<br><br>
+<%= link_to "Back", campaign_path(params[:dump][:campaign]) %>

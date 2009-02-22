@@ -1,0 +1,31 @@
+
+<% form_for @campaign do |f| %>
+  <%= f.error_messages %>
+  
+<table width= "50%" border="0" >
+	<tr><th><%= f.label :name %></th><td><%= f.text_field :name %></td></tr>
+	<tr><th><%= f.label :day_of_month %></th><td><%= f.text_field :call_dom %></td></tr>
+	<tr><th><%= f.label :days %></th><td><%= f.text_field :call_days %></td></tr>
+	<tr><th><%= f.label :hours %></th><td><%= f.text_field :call_hours %></td></tr>
+	<tr><th><%= f.label :carrier %></th><td><%= f.text_field :carrier %></td></tr>
+	<tr><th><%= f.label :account %></th><td><%= f.text_field :account %></td></tr>
+	<tr><th><%= f.label :tries %></th><td><%= f.text_field :tries %></td></tr>
+	<tr><th><%= f.label :timeout %></th><td><%= f.text_field :timeout %></td></tr>
+	<tr><th><%= f.label :contact %></th><td><%= f.text_field :contact_name %></td></tr>
+	<tr><th><%= f.label :test %></th><td>
+		
+		<% a = (1..31) %>
+		<% b = 0 %>
+		<% a.each do |x| %>
+		<% b+=1 %>
+		<input type=checkbox name="call_month[]" value=<%= x %> <%= "checked" if @campaign.call_month.include?(x.to_s) %> ><%= x %>
+	<% if b==7 %>
+	<br>
+	<% b = 0 %>
+	<% end %>
+	<% end %>
+
+		</td></tr>    
+</table><br>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

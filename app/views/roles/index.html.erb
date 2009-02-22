@@ -1,0 +1,18 @@
+<% title "Roles" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Notes</th>
+    <th>&nbsp;</th>
+  </tr>
+  <% for role in @roles %>
+    <tr>
+      <td><%=h role.name %></td>
+      <td><%=h role.notes %></td>
+      <td><%= link_to "Show", role %> - <%= link_to "Edit", edit_role_path(role) %> - <%= link_to "Destroy", role, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<span class="note">*Note 'Super User' is a hidden Role.</span>
+<p><%= link_to "New Role", new_role_path %></p>

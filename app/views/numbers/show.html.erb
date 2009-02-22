@@ -1,0 +1,17 @@
+<% title @name.name %>
+<% form_tag request.path, :method => 'get' do %>
+  <% content_tag :label do %>
+    Search term:
+    <%= text_field_tag :search, params[:search] %>
+  <% end %>
+<% end %>
+
+<% @number.each do |number| %>
+<p>
+  <strong>ANI:</strong>
+  <%=h number.number %>  [<%= link_to "Destroy", number,:confirm => 'Are you sure?', :method => :delete %>]
+</p>
+
+<% end %>
+<%= will_paginate @number %><br>
+<%= link_to "Back to Campaign", campaign_path(@name.id) %>

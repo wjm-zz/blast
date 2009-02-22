@@ -1,0 +1,18 @@
+<% form_for @user do |f| %>
+  <%= f.error_messages %><br>
+  <p>
+  	<%= f.label :login %>: <u><%= @user.login %></u>
+  </p>
+  <p>
+ 	<%= f.label :Site %>:
+	<%= f.select :site_id, Site.find(:all).collect{|c| [c.name, c.id]} %>
+  <p>
+    <%= f.label :Role %>:
+    <%= f.select :role_id, Role.find(:all,:conditions=>['name not like ?',"Super User"]).collect{|r|[r.name,r.id]} %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+
+<p>
+  <%= link_to "View All", users_path %>
+</p>

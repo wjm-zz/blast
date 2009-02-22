@@ -1,0 +1,17 @@
+<% title "Users" %>
+
+<table>
+	<tr><th>User</th><th>Role</th><th>Site</th><th>&nbsp;</th></tr>
+	<% @users.each do |u| %>
+		<tr><td>
+		<% if u.login == "su" %>
+			<%= u.login %>
+		<% else %>
+			<%= link_to u.login, edit_user_path(u) %>
+		<% end %>
+			
+			</td><td><%= u.role.name %></td><td><%= u.site.name %></td><td><%= link_to "Delete", u, :confirm => 'Are you sure?', :method => :delete %></td></tr>
+	<% end %>
+</table>
+<span class="note">*Note 'su' is a hidden User.</span><br><br>
+<%= link_to "New User", signup_path %>

@@ -1,0 +1,12 @@
+<% form_for @right do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes, :size => "25x3" %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

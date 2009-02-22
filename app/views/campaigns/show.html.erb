@@ -1,0 +1,32 @@
+<% title "Campaign "+ @campaign.name %>
+<%= debug params.to_yaml %>
+<table width= "50%" border="0" >
+	<tr><th>Name</th><td><%=h @campaign.name %></td></tr>
+	<tr><th>Month</th><td><%=h @campaign.call_month.gsub(/["]/,'').split %></td></tr>
+	<tr><th>Call Dom</th><td><%=h @campaign.call_dom %></td></tr>
+	<tr><th>Call Days</th><td><%=h @campaign.call_days %></td></tr>
+	<tr><th>Call Hours</th><td><%=h @campaign.call_hours %></td></tr>
+	<tr><th>Carrier</th><td><%=h @campaign.carrier %></td></tr>
+	<tr><th>Account</th><td><%=h @campaign.account %></td></tr>
+	<tr><th>Tries</th><td><%=h @campaign.tries %></td></tr>
+	<tr><th>Timeout</th><td><%=h @campaign.timeout %></td></tr>
+	<tr><th>Contact</th><td><%=h @campaign.contact_name %></td></tr>
+	<tr><th>Calls to Transmit</th><td><%=h @campaign.numbers_count %></td></tr>
+ </table>
+<br>
+ <% form_for :dump, :url=>{:controller=>"campaigns", :action=>"csv_import"}, :html => { :multipart => true } do |f| -%>
+      <label for="dump_file">
+        Select a CSV File :
+      </label>
+       <%= f.file_field :file -%>
+       <%= submit_tag 'Submit' -%>
+
+ <%= f.hidden_field :campaign, :value => params[:id] %>
+<% end -%>
+
+<p>
+  <%= link_to "Edit", edit_campaign_path(@campaign) %> |
+  <%= link_to "Destroy", @campaign, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", campaigns_path %>
+  <%= link_to "Edit Numbers", number_path(1) %>
+</p>

@@ -1,0 +1,15 @@
+<% title "Sites" %>
+
+<table>
+  <tr>
+    <th>Name</th><th>&nbsp;</th>
+  </tr>
+  <% for site in @sites %>
+    <tr>
+      <td><%= link_to site.name, site %></td>
+      <td><%= link_to "Show", site %> - <%= link_to "Destroy", site, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Site", new_site_path %></p>

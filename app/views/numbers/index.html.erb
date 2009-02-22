@@ -1,0 +1,19 @@
+<% title "Numbers" %>
+<%= debug params %>
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Campaign</th>
+  </tr>
+  <% for number in @numbers %>
+    <tr>
+      <td><%=h number.number %></td>
+      <td><%=h number.campaign_id %></td>
+      <td><%= link_to "Show", number %></td>
+      <td><%= link_to "Edit", edit_number_path(number) %></td>
+      <td><%= link_to "Destroy", number, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Number", new_number_path %></p>

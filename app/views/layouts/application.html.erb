@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title><%= h(yield(:title) || "Untitled") %></title>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'style' %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+    	
+    		<div id="header">
+	<a href="index.html">about</a>
+	<a href="index.html">contact</a>
+	<a href="index.html">home</a>
+	<div id="sitename">Flexony admin...</div>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= image_tag "earth.jpg" %>
+	</div><br>
+		<div id="leftcol">
+		<h2>Menu</h2>
+		<ul>
+			<% if logged_in? %>
+		     <% if current_user.role.rights.exists?(2) %><li><%= link_to "Users", users_path %></li><% end %>
+		     <% if current_user.role.rights.exists?(5) %><li><%= link_to "Roles", roles_path %></li><% end %>
+		     <% if current_user.role.rights.exists?(4) %><li> <%= link_to "Rights", rights_path %></li><% end %>
+		     <% if current_user.role.rights.exists?(3) %><li><%= link_to "Sites", sites_path %></li><% end %>
+		     <li> <%= link_to "Log out", logout_path if logged_in? %></li>
+			<% end %>
+		</ul>
+		<div class="text">
+		<% if logged_in? %>
+		<h2><i>Welcome</i></h2>
+	      <div class="logged">
+	      	  <b>User:</b> <u><%= current_user.login %></u><br>
+	      	  <b>Role:</b>  <%= current_user.role.name %><br>
+	      	  <b>Site:</b>  <%= current_user.site.name %>
+	      </div>
+		<% end %>
+		</div>
+	</div>
+	<div id="main">
+	<h1><%=h yield(:title) %></h1>
+<div class="copy"><%= yield %></div>
+
+          		<!-- 					FLASH START 					-->
+<center>
+<% flash.each do |key, msg| %>
+	<%= content_tag :div, msg, :class => "flash", :id => "flash_#{key}" %>
+	<% content_tag :script, :type => "text/javascript" do %>
+	      $('flash_<%= key %>').style.display = 'none';
+	      new Effect.Appear('flash_<%= key %>', {duration: 3});
+	<% end %>
+	  
+	<% content_tag :script, :type => "text/javascript" do %>
+	      setTimeout("new Effect.Fade('flash_<%= key %>');", 5000);
+	<% end %>
+<% end %></center><br>
+		<!-- 					FLASH END 					-->
+	</div>
+	<div id="footer">
+	Flexony : <a href="http://www.myqueball.com">Design by MyQueball.com</a>
+	</div>
+</div>
+ 
+  </div>
+  </body>
+</html>

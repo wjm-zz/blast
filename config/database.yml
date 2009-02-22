@@ -1,0 +1,18 @@
+# MySQL
+defaults: &defaults
+  adapter: mysql
+  encoding: utf8
+  username: root
+  socket: /var/lib/mysql/mysql.sock
+
+development:
+  database: blast_development
+  <<: *defaults
+
+test:
+  database: blast_test
+  <<: *defaults
+
+production:
+  database: blast
+  <<: *defaults

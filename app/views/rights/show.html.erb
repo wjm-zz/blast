@@ -1,0 +1,16 @@
+<% title "Right" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @right.name %>
+</p>
+<p>
+  <strong>Notes:</strong>
+  <%=h @right.notes %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_right_path(@right) %> |
+  <%= link_to "Destroy", @right, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", rights_path %>
+</p>

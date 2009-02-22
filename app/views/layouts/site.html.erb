@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title><%= h(yield(:title) || "Untitled") %></title>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div id="container">
+<% if logged_in? %>
+	<div class="logged">
+		<%= link_to "Home", customer_path if logged_in? %> - 
+      <%= link_to "Campaigns", campaigns_path if logged_in? %> - <%= link_to "Log out", logout_path if logged_in? %><br>
+       You are logged in as <b><%= current_user.login %></b> (<%= current_user.role.name %>)
+    </div>
+<% end %>
+      <%- if show_title? -%>
+        <h1><%=h yield(:title) %></h1>
+      <%- end -%>
+      
+      <%= yield %>
+  
+           		<!-- 					FLASH START 					-->
+<center>
+<% flash.each do |key, msg| %>
+	<%= content_tag :div, msg, :class => "flash", :id => "flash_#{key}" %>
+	<% content_tag :script, :type => "text/javascript" do %>
+	      $('flash_<%= key %>').style.display = 'none';
+	      new Effect.Appear('flash_<%= key %>', {duration: 3});
+	<% end %>
+	  
+	<% content_tag :script, :type => "text/javascript" do %>
+	      setTimeout("new Effect.Fade('flash_<%= key %>');", 5000);
+	<% end %>
+<% end %></center><br>
+		<!-- 					FLASH END 					-->
+  </div>
+  </body>
+</html>
